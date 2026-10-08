@@ -157,6 +157,84 @@ Shadow RGB: `44 74 124`.
 
 ---
 
+## Red palettes, if the client wants red
+
+The research above argues against red. This section exists because the client may ask for it anyway. These are drop-ins for the same three lines. Each one is a true red, hue 356° to 4°, well clear of the Airbnb pink family (340° to 349°) and the current warning amber (26°). All three are deep, under 75% value, so they read as lacquer and wine rather than a sale banner or a Netflix shout.
+
+| | Hue | Saturation | Value | White text |
+|---|---|---|---|---|
+| Lacquer `#B8281E` | 4° | 84% | 72% | 6.25:1 |
+| Garnet `#A3222B` | 356° | 79% | 64% | 7.44:1 |
+| Oxblood `#7E2224` | 359° | 73% | 49% | 9.81:1 |
+| for reference: Netflix `#E50914` | 357° | 96% | 90% | 4.79:1 |
+| for reference: Wayfare old pink `#e31c5f` | 340° | 88% | 89% | 4.57:1 |
+
+### 4. Lacquer, the confident red
+
+Chinese lacquer, a postbox, a vermilion gate. Hue 4°, so it leans a touch warm and stays unmistakably red next to the coral and pink in travel photos. This is the one to show if the client says "red" and means it. Saturation is 84%, a little over our 80% ceiling. The low value keeps it from going neon.
+
+| Token | Hex | White text | On the soft wash |
+|---|---|---|---|
+| `--color-brand` | `#B8281E` | 6.25:1 | 5.44:1 |
+| `--color-brand-dark` | `#8E1E17` | 8.94:1 | 7.79:1 |
+| `--color-brand-soft` | `#FBECEA` | wash only | |
+
+```css
+--color-brand: #B8281E;
+--color-brand-dark: #8E1E17;
+--color-brand-soft: #FBECEA;
+```
+
+Shadow RGB: `184 40 30`.
+
+### 5. Garnet, the premium red
+
+A wine-red with a hint of blue in it. Hue 356°. Darker and cooler than Lacquer, so it feels like a hotel concierge desk rather than a promotion. Best all-round red for this product: strong enough to be a brand, calm enough to sit under photography. If only one red goes in front of the client, make it this one.
+
+| Token | Hex | White text | On the soft wash |
+|---|---|---|---|
+| `--color-brand` | `#A3222B` | 7.44:1 | 6.42:1 |
+| `--color-brand-dark` | `#7C1820` | 10.46:1 | 9.02:1 |
+| `--color-brand-soft` | `#F9EBEC` | wash only | |
+
+```css
+--color-brand: #A3222B;
+--color-brand-dark: #7C1820;
+--color-brand-soft: #F9EBEC;
+```
+
+Shadow RGB: `163 34 43`.
+
+### 6. Oxblood, the quietest red
+
+Leather, old passports, a library chair. Hue 359°, value 49%. On small text it can read as near-brown, so it relies on the button fill and the logo to be seen as red. Choose it if the client wants red but also wants the restraint of North.
+
+| Token | Hex | White text | On the soft wash |
+|---|---|---|---|
+| `--color-brand` | `#7E2224` | 9.81:1 | 8.47:1 |
+| `--color-brand-dark` | `#5E191B` | 12.88:1 | 11.12:1 |
+| `--color-brand-soft` | `#F6ECEC` | wash only | |
+
+```css
+--color-brand: #7E2224;
+--color-brand-dark: #5E191B;
+--color-brand-soft: #F6ECEC;
+```
+
+Shadow RGB: `126 34 36`.
+
+### What a red brand changes
+
+A red accent costs three things the blue palettes do not. Plan for them before the demo.
+
+- **Red already means "wrong" in this UI.** High-severity gaps use `bg-brand` (`src/components/Shell.tsx`). With a red brand that happens to look right, but it means the Start a trip button and an urgent gap are the same color. The planned `--color-danger: #9F2D2D` is hue 0°, practically the same as Garnet and Oxblood, so do not add it as a red. With a red brand, mark high gaps with ink plus a warning icon, or with warn amber, and keep red for action.
+- **The PASS stamp and pass button turn into the brand.** The pass control uses `text-brand`, and the PASS stamp is hardcoded `#ff4d7e`. "Not interested" in red sits next to a red primary button. Point the pass button at `ink-2` so declining does not wear the product color.
+- **Arpit's avatar `#e31c5f` and the Discover taste-count flash** are still the old pink. Next to a red brand that pink reads as a mistake, not a person. Change the avatar to a non-red tint (for example the North blue `#2C4A7C`) and point the flash at `var(--color-brand)`.
+
+Everything else follows the three lines. The button glow and scanline already derive from `--color-brand` through `color-mix`.
+
+---
+
 ## How the colors work together
 
 The layout already has the right button system. The palette should respect it.
