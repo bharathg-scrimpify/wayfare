@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'motion/react'
 import clsx from 'clsx'
 import { ArrowRight, AirplaneTilt, Bed, Ticket, FileText, Heart, Sparkle, Headset, MapPin, SealCheck, UploadSimple, Plus, ArrowsLeftRight, Check } from '@phosphor-icons/react'
-import { Avatar, AvatarStack, Button, Img, Reveal, Ring, KindBadge } from '../components/ui'
+import { Avatar, AvatarStack, Button, Cover, Img, Reveal, Ring, KindBadge } from '../components/ui'
 import { DAYS, DOCUMENTS, PEOPLE, TRIP, CATALOG, fmt12 } from '../data/mock'
 import { GapList } from '../components/Shell'
 import { useTrip } from '../store/trip'
@@ -20,7 +20,7 @@ export default function Overview() {
   return (
     <div className="mx-auto max-w-[1280px] px-5 pt-4 md:px-10">
       <section className="relative overflow-hidden rounded-[32px]">
-        <Img k={TRIP.cover} eager className="absolute inset-0" w={1600} h={800} alt="London" />
+        <Cover k={TRIP.cover} className="absolute inset-0" w={1600} h={800} alt="London" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-black/10" />
         <div className="relative grid gap-8 p-6 text-white md:grid-cols-[1fr_auto] md:items-end md:p-12 md:pt-28">
           <div>

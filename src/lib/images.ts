@@ -52,6 +52,15 @@ export function imageSources(key: string, w = 900, h = 700): string[] {
   return out
 }
 
+// Looping cover clips. The still photo stays up until the file can play.
+const COVER_VIDEOS: Record<string, string> = {
+  london: 'https://videos.pexels.com/video-files/3568720/3568720-hd_1920_1080_30fps.mp4',
+}
+
+export function coverVideo(key: string): string | undefined {
+  return COVER_VIDEOS[key]
+}
+
 export function gradientFor(key: string): string {
   const e = IMAGES[key]
   if (!e) return 'linear-gradient(135deg,#2a2a2a,#8a8a8a)'

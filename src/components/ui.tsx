@@ -1,8 +1,8 @@
-import { useEffect, useState, type ReactNode, type ButtonHTMLAttributes } from 'react'
+import { useEffect, useRef, useState, type ReactNode, type ButtonHTMLAttributes } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import clsx from 'clsx'
 import { Lock, ArrowsLeftRight, Heart, X, CheckCircle, WarningCircle, Info } from '@phosphor-icons/react'
-import { gradientFor, imageSources } from '../lib/images'
+import { coverVideo, gradientFor, imageSources } from '../lib/images'
 import { PEOPLE } from '../data/mock'
 import { useTrip } from '../store/trip'
 
@@ -37,6 +37,46 @@ export function Img({ k, alt = '', className, w = 900, h = 700, eager = false }:
           onLoad={() => setOk(true)}
           onError={() => { setOk(false); setI((n) => n + 1) }}
           className={clsx('absolute inset-0 h-full w-full select-none object-cover transition-opacity duration-500', ok ? 'opacity-100' : 'opacity-0')}
+        />
+      )}
+    </div>
+  )
+}
+
+export function Cover({ k, alt = '', className, w = 1600, h = 800 }: { k: string; alt?: string; className?: string; w?: number; h?: number }) {
+  const reduce = useReducedMotion()
+  const video = coverVideo(k)
+  const play = reduce === false && !!video
+  const ref = useRef<HTMLVideoElement>(null)
+  const [on, setOn] = useState(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el || !play) return
+    el.muted = true
+    const start = () => { el.play().catch(() => setOn(false)) }
+    const onVis = () => { if (document.hidden) el.pause(); else start() }
+    document.addEventListener('visibilitychange', onVis)
+    start()
+    return () => document.removeEventListener('visibilitychange', onVis)
+  }, [play, video])
+
+  return (
+    <div className={clsx('overflow-hidden', className)}>
+      <Img k={k} alt={alt} eager className="absolute inset-0" w={w} h={h} />
+      {play && (
+        <video
+          ref={ref}
+          src={video}
+          muted
+          loop
+          playsInline
+          autoPlay
+          preload="auto"
+          aria-hidden
+          onPlaying={() => setOn(true)}
+          onError={() => setOn(false)}
+          className={clsx('pointer-events-none absolute inset-0 h-full w-full object-cover transition-opacity duration-700', on ? 'opacity-100' : 'opacity-0')}
         />
       )}
     </div>
