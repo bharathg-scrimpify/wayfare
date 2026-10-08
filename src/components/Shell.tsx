@@ -1,6 +1,6 @@
 import { useEffect, useState, type ReactNode } from 'react'
 import { NavLink, Outlet, useLocation, useNavigate, Link } from 'react-router-dom'
-import { AnimatePresence, motion } from 'motion/react'
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import clsx from 'clsx'
 import {
   House, CalendarBlank, Compass, UsersThree, Headset, Heart, MapPin, SealCheck, Sparkle, Play, CaretRight, CaretLeft, X, Stethoscope, CircleNotch, CheckCircle, ArrowRight, UploadSimple,
@@ -40,6 +40,7 @@ const TOUR = [
 
 export function Shell() {
   const loc = useLocation()
+  const reduce = useReducedMotion()
   const inTrip = loc.pathname.startsWith('/trip')
   useEffect(() => { window.scrollTo({ top: 0 }) }, [loc.pathname])
   return (
@@ -47,11 +48,14 @@ export function Shell() {
       <Header inTrip={inTrip} />
       {inTrip && <TripTabs />}
       <main className={clsx(inTrip ? 'pb-32 md:pb-24' : '')}>
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.div key={loc.pathname} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}>
-            <Outlet />
-          </motion.div>
-        </AnimatePresence>
+        <motion.div
+          key={loc.pathname}
+          initial={reduce ? false : { opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <Outlet />
+        </motion.div>
       </main>
       {inTrip && <TripHealth />}
       {inTrip && <BottomBar />}

@@ -18,7 +18,7 @@ import Admin from './pages/Admin'
 export default function App() {
   return (
     <TripProvider>
-      <HashRouter>
+      <HashRouter useTransitions={false}>
         <Routes>
           <Route element={<Shell />}>
             <Route path="/" element={<Home />} />

@@ -48,7 +48,7 @@ export function Button({ v = 'primary', size = 'md', icon, className, children, 
   const base = 'inline-flex items-center justify-center gap-2 rounded-full font-semibold whitespace-nowrap transition-[transform,background-color,box-shadow,border-color] duration-200 active:scale-[0.97] disabled:opacity-45 disabled:pointer-events-none'
   const sizes = { sm: 'h-9 px-4 text-[13px]', md: 'h-11 px-5 text-[15px]', lg: 'h-14 px-8 text-[16px]' }
   const vs = {
-    primary: 'bg-brand text-white hover:bg-brand-dark shadow-[0_8px_20px_-8px_rgb(227_28_95/0.7)]',
+    primary: 'bg-brand text-white hover:bg-brand-dark shadow-brand',
     dark: 'bg-ink text-white hover:bg-black',
     outline: 'border border-ink/25 bg-white text-ink hover:border-ink hover:bg-surface',
     ghost: 'text-ink hover:bg-surface',

@@ -10,9 +10,9 @@
   --color-line: #ebebeb;
   --color-surface: #f7f7f7;
   --color-canvas: #ffffff;
-  --color-brand: #e31c5f;
-  --color-brand-dark: #c4124f;
-  --color-brand-soft: #fff0f4;
+  --color-brand: #1F6F78;
+  --color-brand-dark: #16555C;
+  --color-brand-soft: #E6F3F4;
   --color-ok: #0f8a5f;
   --color-ok-soft: #e8f6ef;
   --color-warn: #b45309;
@@ -21,6 +21,7 @@
   --radius-card: 1.5rem;
   --shadow-soft: 0 6px 24px -8px rgb(34 34 34 / 0.18);
   --shadow-lift: 0 18px 48px -16px rgb(34 34 34 / 0.35);
+  --shadow-brand: 0 8px 20px -8px color-mix(in srgb, var(--color-brand) 55%, transparent);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -50,7 +51,7 @@ button:focus-visible, a:focus-visible, input:focus-visible {
   animation: shimmer 1.4s infinite;
 }
 @keyframes scan { 0% { top: 0 } 100% { top: calc(100% - 3px) } }
-.scanline { position: absolute; left: 0; right: 0; height: 3px; background: var(--color-brand); box-shadow: 0 0 18px 2px rgb(227 28 95 / .5); animation: scan 1.6s ease-in-out infinite alternate; }
+.scanline { position: absolute; left: 0; right: 0; height: 3px; background: var(--color-brand); box-shadow: 0 0 18px 2px color-mix(in srgb, var(--color-brand) 50%, transparent); animation: scan 1.6s ease-in-out infinite alternate; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }

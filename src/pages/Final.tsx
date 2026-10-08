@@ -18,7 +18,7 @@ export default function Final() {
       <PageTitle title="Final trip check" sub="A last look before you go. Ready, needs attention, and nice-to-haves." />
       <div className="relative mb-8 flex items-center gap-6 overflow-hidden rounded-[32px] bg-ink p-6 text-white md:p-8">
         {allGood && <Confetti />}
-        <div className="rounded-full bg-white p-2"><Ring value={pct} size={110} stroke={10} /></div>
+        <div className="rounded-full bg-white p-2 text-ink"><Ring value={pct} size={110} stroke={10} /></div>
         <div>
           <p className="text-[13px] font-semibold text-white/60">{ready.length} ready, {attention.length} need you</p>
           <p className="text-[28px] font-extrabold leading-tight tracking-tight md:text-[36px]">{allGood ? 'You are trip-ready' : 'Nearly there'}</p>

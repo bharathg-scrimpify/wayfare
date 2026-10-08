@@ -290,7 +290,7 @@ function ShareSheetMock() {
         <p className="mb-3 text-center text-[13px] font-semibold text-ink-2">Share to</p>
         <div className="grid grid-cols-4 gap-3 text-center text-[11px] font-semibold text-ink-2">
           {['Messages', 'WhatsApp', 'Notes'].map((a) => <span key={a} className="flex flex-col items-center gap-1.5"><span className="h-12 w-12 rounded-2xl bg-surface" />{a}</span>)}
-          <motion.span animate={{ scale: [1, 1.07, 1] }} transition={{ duration: 2.4, repeat: Infinity }} className="flex flex-col items-center gap-1.5 text-brand"><span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand text-white shadow-[0_8px_20px_-8px_rgb(227_28_95/0.8)]"><svg width="24" height="24" viewBox="0 0 64 64"><path d="M17 41 L28 22 L36 34 L42 26 L48 41" fill="none" stroke="#fff" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" /></svg></span>Wayfare</motion.span>
+          <motion.span animate={{ scale: [1, 1.07, 1] }} transition={{ duration: 2.4, repeat: Infinity }} className="flex flex-col items-center gap-1.5 text-brand"><span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand text-white shadow-brand"><svg width="24" height="24" viewBox="0 0 64 64"><path d="M17 41 L28 22 L36 34 L42 26 L48 41" fill="none" stroke="#fff" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" /></svg></span>Wayfare</motion.span>
         </div>
       </div>
     </div>
